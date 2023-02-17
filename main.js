@@ -10,7 +10,7 @@ async function getResponse() {
         const difficulty = difficultyBox.value;
         const story = storyDiv.value;
 
-        if(difficulty === "") {
+        if (difficulty === "") {
             storyDiv.innerText = "Firstly, Choose level.";
             return;
         };
@@ -36,6 +36,41 @@ async function getResponse() {
 
 }
 
+async function checkAnswers() {
+    try {
+        const difficultyBox = document.getElementById("difficultyBox");
+        const answersContainer = document.getElementById("answersContainer");
+
+        const answer1Input = document.getElementById("answer1");
+        const answer2Input = document.getElementById("answer2");
+        const answer3Input = document.getElementById("answer3");
+        const answer4Input = document.getElementById("answer4");
+        const answer5Input = document.getElementById("answer5");
+
+        const answer1 = answer1Input.value;
+        const answer2 = answer2Input.value;
+        const answer3 = answer3Input.value;
+        const answer4 = answer4Input.value;
+        const answer5 = answer5Input.value;
+
+        answersContainer.style.display = "none";
+
+        // Create prompt:
+        const prompt = promptAnswers(answer1, answer2, answer3, answer4, answer5);
+
+        // Get completion:
+        const completion = await getCompletion(prompt);
+
+        // Display:
+        displayHumanLikeWriting(completion);
+
+    }
+    catch (err) {
+        alert(err.message);
+        console.log(err.message);
+    }
+}
+
 async function displayHumanLikeWriting(completion) {
     let text = "";
     for (let i = 0; i < completion.length; i++) {
@@ -53,7 +88,7 @@ function delay(ms) {
     });
 }
 
-// The question:
+// The question to create story and questions:
 function promptEngineering(difficulty) {
     let prompt = `
         Write a little story on english for ${difficulty} and then write 5 questions about the story.
@@ -64,10 +99,19 @@ function promptEngineering(difficulty) {
     return prompt;
 }
 
+// The question to check answers:
+function promptAnswers(answer1, answer2, answer3, answer4, answer5) {
+    let prompt = `
+            ${answer1}, ${answer2}, ${answer3}, ${answer4}, ${answer5}.
+            Check the answers by write for each answer if its true or not and give a final grade for all the answers from 0 to 100 as true answer is 20 points.
+        `;
+    return prompt;
+}
+
 async function getCompletion(prompt) {
 
     // API key:
-    const apiKey = "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";
+    const apiKey = "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";
 
     // URL:
     const url = "https://api.openai.com/v1/completions";
