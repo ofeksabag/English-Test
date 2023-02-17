@@ -53,6 +53,7 @@ function delay(ms) {
     });
 }
 
+// The question:
 function promptEngineering(difficulty) {
     let prompt = `
         Write a little story on english for ${difficulty} and then write 5 questions about the story.
