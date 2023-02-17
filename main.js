@@ -16,7 +16,6 @@ async function getResponse() {
         };
 
         levelContainer.style.display = "none";
-        answersContainer.style.display = "block";
 
         storyDiv.innerText = "Loading story...";
 
@@ -28,6 +27,9 @@ async function getResponse() {
 
         // Display:
         displayHumanLikeWriting(completion);
+
+        answersContainer.style.display = "block";
+
     }
     catch (err) {
         alert(err.message);
@@ -102,8 +104,14 @@ function promptEngineering(difficulty) {
 // The question to check answers:
 function promptAnswers(answer1, answer2, answer3, answer4, answer5) {
     let prompt = `
-            ${answer1}, ${answer2}, ${answer3}, ${answer4}, ${answer5}.
-            Check the answers by write for each answer if its true or not and give a final grade for all the answers from 0 to 100 as true answer is 20 points.
+            "${answer1}" - whether the answer is correct to the question 1 or not. If the answer is correct, give 20 points following format: "answer" and if it current write "current" and "-" and how much points and " points".
+            "${answer2}" - whether the answer is correct to the question 2 or not. If the answer is correct, give 20 points following format: "answer" and if it current write "current" and "-" and how much points and " points".
+            "${answer3}" - whether the answer is correct to the question 3 or not. If the answer is correct, give 20 points following format: "answer" and if it current write "current" and "-" and how much points and " points".
+            "${answer4}" - whether the answer is correct to the question 4 or not. If the answer is correct, give 20 points following format: "answer" and if it current write "current" and "-" and how much points and " points".
+            "${answer5}" - whether the answer is correct to the question 5 or not. If the answer is correct, give 20 points following format: "answer" and if it current write "current" and "-" and how much points and " points".
+            When you finish, Write down the total points in the following format:
+            "Grade: X" at h1 using HTML.
+            Arrange each in a different HTML paragraph.
         `;
     return prompt;
 }
@@ -111,7 +119,7 @@ function promptAnswers(answer1, answer2, answer3, answer4, answer5) {
 async function getCompletion(prompt) {
 
     // API key:
-    const apiKey = "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";
+    const apiKey = "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";
 
     // URL:
     const url = "https://api.openai.com/v1/completions";
