@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <h1>English Test</h1>
+
+    <div id="levelContainer">
+
+        <select defaultValue="" id="difficultyBox">
+            <option value="" selected disabled>Select Level...</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Elementary">Elementary</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+            <option value="Fluent">Fluent</option>
+        </select>
+
+        <button onclick="getResponse()">Start</button>
+
+    </div>
+
+    <div id="storyDiv"></div>
+
+    <div id="answersContainer">
+
+        <textarea id="answer1" placeholder="Answer 1"></textarea>
+
+        <textarea id="answer2" placeholder="Answer 2"></textarea>
+
+        <textarea id="answer3" placeholder="Answer 3"></textarea>
+
+        <textarea id="answer4" placeholder="Answer 4"></textarea>
+
+        <textarea id="answer5" placeholder="Answer 5"></textarea>
+
+        <button onclick="checkAnswers()">Check</button>
+
+    </div>
+
+</body>
+
+</html>
