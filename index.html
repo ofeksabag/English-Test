@@ -34,17 +34,21 @@
 
         <hr />
 
-        <textarea id="answer1" placeholder="Answer 1"></textarea>
+        <form onsubmit="checkAnswers()">
+        
+            <textarea id="answer1" placeholder="Answer 1" required minlength="5"></textarea>
 
-        <textarea id="answer2" placeholder="Answer 2"></textarea>
+            <textarea id="answer2" placeholder="Answer 2" required minlength="5"></textarea>
+    
+            <textarea id="answer3" placeholder="Answer 3" required minlength="5"></textarea>
+    
+            <textarea id="answer4" placeholder="Answer 4" required minlength="5"></textarea>
+    
+            <textarea id="answer5" placeholder="Answer 5" required minlength="5"></textarea>
+    
+            <button>Check</button>
 
-        <textarea id="answer3" placeholder="Answer 3"></textarea>
-
-        <textarea id="answer4" placeholder="Answer 4"></textarea>
-
-        <textarea id="answer5" placeholder="Answer 5"></textarea>
-
-        <button onclick="checkAnswers()">Check</button>
+        </form>
 
     </div>
 

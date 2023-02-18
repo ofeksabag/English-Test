@@ -40,6 +40,9 @@ async function getResponse() {
 
 async function checkAnswers() {
     try {
+
+        event.preventDefault();
+
         const difficultyBox = document.getElementById("difficultyBox");
         const answersContainer = document.getElementById("answersContainer");
 
@@ -104,14 +107,14 @@ function promptEngineering(difficulty) {
 // The question to check answers:
 function promptAnswers(answer1, answer2, answer3, answer4, answer5) {
     let prompt = `
-            "${answer1}" - whether the answer is correct to the question 1 or not. If the answer is correct, give 20 points following format: "answer" and if it current write "current" and "-" and how much points and " points".
-            "${answer2}" - whether the answer is correct to the question 2 or not. If the answer is correct, give 20 points following format: "answer" and if it current write "current" and "-" and how much points and " points".
-            "${answer3}" - whether the answer is correct to the question 3 or not. If the answer is correct, give 20 points following format: "answer" and if it current write "current" and "-" and how much points and " points".
-            "${answer4}" - whether the answer is correct to the question 4 or not. If the answer is correct, give 20 points following format: "answer" and if it current write "current" and "-" and how much points and " points".
-            "${answer5}" - whether the answer is correct to the question 5 or not. If the answer is correct, give 20 points following format: "answer" and if it current write "current" and "-" and how much points and " points".
-            When you finish, Write down the total points in the following format:
-            "Grade: X" at h1 using HTML.
-            Arrange each in a different HTML paragraph.
+            check if the answer "${answer1}" is correct for question 1 and write at this format: "${answer1}" is correct or not.
+            check if the answer "${answer2}" is correct for question 2 and write at this format: "${answer2}" is correct or not.
+            check if the answer "${answer3}" is correct for question 3 and write at this format: "${answer3}" is correct or not.
+            check if the answer "${answer4}" is correct for question 4 and write at this format: "${answer4}" is correct or not.
+            check if the answer "${answer5}" is correct for question 5 and write at this format: "${answer5}" is correct or not.
+            Arrange each answer in a different HTML paragraph.
+            for each correct answer give 20 points.
+            after all, write the total grade following format: Grade: the score and /100 and on h1 using HTML.
         `;
     return prompt;
 }
@@ -119,7 +122,7 @@ function promptAnswers(answer1, answer2, answer3, answer4, answer5) {
 async function getCompletion(prompt) {
 
     // API key:
-    const apiKey = "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";
+    const apiKey = "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";
 
     // URL:
     const url = "https://api.openai.com/v1/completions";
